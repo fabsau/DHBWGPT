@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  .container.mt-4
+    .col-md-10.offset-md-1.flexible-row
+      .card
+        .card-header
+          .row
+            .col-md-2
+              h6 Model
+              select#model-selector.form-control
+                option(value="gpt-35-turbo") gpt-3.5-turbo
+                option(value="gpt-35-turbo-16k") gpt-3.5-turbo-16k
+                option(value="gpt-4") gpt-4
+                option(value="gpt-4-32k") gpt-4-32k
+            // Input fields for various parameters
+            .col-md-2
+              h6 Token
+              input#token-input.form-control(type='number', step='1', min='0', max='32768', placeholder='Token', value='500')
+            .col-md-2
+              h6 Temperature
+              input#temperature-input.form-control(type='number', step='0.1', min='0', max='2', placeholder='Temperature', value='0.7')
+            .col-md-2
+              h6 Top P
+              input#top-p-input.form-control(type='number', step='0.1', min='0', max='1', placeholder='Top P', value='1')
+            .col-md-2
+              h6 Frequency
+              input#frequency-penalty-input.form-control(type='number', step='0.1', min='-2', max='2', placeholder='Frequency Penalty', value='0')
+            .col-md-2
+              h6 Presence
+              input#presence-penalty-input.form-control(type='number', step='0.1', min='-2', max='2', placeholder='Presence Penalty', value='0')
+        .card-body
+          #chat-window.chat-window.flex-grow-1.overflow-auto
+              ul#chat
+          hr
+          form#chat-form.d-flex
+              textarea#message-input.form-control(flex='1', rows='3', placeholder='Type a message...')
+              .d-flex.flex-column.align-items-end.ml-3
+                  button#sendButton.btn.btn-primary(type='submit') Send
+                  button#stopButton.btn.btn-danger(type='button', style='display: none;', disabled) Stop
+  block scripts
+    script(src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js")
+    script(src="/javascripts/index.js")
