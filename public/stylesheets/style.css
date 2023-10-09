@@ -1,11 +1,7 @@
-body {
+body, html {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
+    height: 100vh;
 }
 
 footer.text-center {

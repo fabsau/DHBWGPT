@@ -1,5 +1,6 @@
+// javascripts/index.js
+
 // DOM elements reference cache
-// These are the elements we will interact with in the DOM
 const domElements = {
   chatForm: document.getElementById('chat-form'),
   tokenInput: document.getElementById('token-input'),
@@ -125,4 +126,44 @@ domElements.stopButton.addEventListener('click', () => {
   // Change the stop button back to send
   domElements.stopButton.style.display = 'none';
   domElements.sendButton.style.display = 'block';
+});
+
+function scrollValue(event) {
+  // Prevent page from scrolling
+  event.preventDefault();
+
+  // Determine the scroll direction (down or up)
+  const direction = event.deltaY < 0 ? 1 : -1;
+
+  // Get the step attribute value of the input field
+  const step = parseFloat(event.target.step);
+
+  // Calculate new value
+  let newValue = parseFloat(event.target.value) + (step * direction);
+
+  // Set the new value within the min and max range
+  if (newValue < event.target.min) {
+    newValue = event.target.min;
+  } else if (newValue > event.target.max) {
+    newValue = event.target.max;
+  }
+
+  // Set the input field's new value, limit decimal precision with toFixed()
+  if (event.target.step.includes('.')) {
+    const decimalPoints = event.target.step.split('.')[1].length;
+    event.target.value = newValue.toFixed(decimalPoints);
+  } else {
+    event.target.value = newValue;
+  }
+}
+
+// Event listener for chat form submission
+domElements.inputField.addEventListener('keydown', event => {
+  // If both Ctrl and Enter keys were pressed
+  if (event.ctrlKey && event.key === 'Enter') {
+    // Prevent the default action (line break in the textarea)
+    event.preventDefault();
+    // Call the generateResponse function directly
+    generateResponse();
+  }
 });

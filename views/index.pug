@@ -1,13 +1,12 @@
 extends layout
 
 block content
-  .container.mt-4
-    .row
-      .col-md-10.offset-md-1
-        .card
+  .container.py-4.h-100
+    .row.justify-content-center.h-100
+      .col-lg-10
+        .card.h-100
           .card-header
             .row
-              // Model selection
               .col-md-2
                 h6 Model
                 select#model-selector.form-control
@@ -15,34 +14,30 @@ block content
                   option(value="gpt-35-turbo-16k") gpt-3.5-turbo-16k
                   option(value="gpt-4") gpt-4
                   option(value="gpt-4-32k") gpt-4-32k
-              // Input fields for various parameters
               .col-md-2
                 h6 Token
-                input#token-input.form-control(type='number', step='1', min='0', max='32768', placeholder='Token', value='500')
+                input#token-input.form-control(type='number', step='1', min='0', max='32768', placeholder='Token', value='500', onwheel='scrollValue(event)')
               .col-md-2
                 h6 Temperature
-                input#temperature-input.form-control(type='number', step='0.1', min='0', max='2', placeholder='Temperature', value='0.7')
+                input#temperature-input.form-control(type='number', step='0.1', min='0', max='2', placeholder='Temperature', value='0.7', onwheel='scrollValue(event)')
               .col-md-2
                 h6 Top P
-                input#top-p-input.form-control(type='number', step='0.1', min='0', max='1', placeholder='Top P', value='1')
+                input#top-p-input.form-control(type='number', step='0.1', min='0', max='1', placeholder='Top P', value='1', onwheel='scrollValue(event)')
               .col-md-2
                 h6 Frequency
-                input#frequency-penalty-input.form-control(type='number', step='0.1', min='-2', max='2', placeholder='Frequency Penalty', value='0')
+                input#frequency-penalty-input.form-control(type='number', step='0.1', min='-2', max='2', placeholder='Frequency Penalty', value='0', onwheel='scrollValue(event)')
               .col-md-2
                 h6 Presence
-                input#presence-penalty-input.form-control(type='number', step='0.1', min='-2', max='2', placeholder='Presence Penalty', value='0')
+                input#presence-penalty-input.form-control(type='number', step='0.1', min='-2', max='2', placeholder='Presence Penalty', value='0', onwheel='scrollValue(event)')
           .card-body
-            // Chat window
             #chat-window.chat-window
               ul#chat
-            hr
           .card-footer
-            // Chat form
             form#chat-form
               .row
                 .col-lg-10
                   textarea#message-input.form-control(rows='3', placeholder='Type a message...')
-                .col-lg-2.ml-auto
+                .col-lg-2.ml-auto.align-self-end
                   button#sendButton.btn.btn-primary(type='submit') Send
                   button#stopButton.btn.btn-danger(type='button', style='display: none;', disabled) Stop
 
