@@ -1,87 +1,60 @@
-// /controllers/indexController.js
-var express = require('express');
-var { body } = require('express-validator');
+// Import required modules
+const express = require('express');
+const { body } = require('express-validator');
 const fetch = require('node-fetch');
+
+// Import local modules
+const utils = require('../utils/utils');
+
+// Load environment variables
 require('dotenv').config();
 
 /**
- * Index controller to manage chat operations
+ * This controller handles requests for the index route.
+ * It includes the function to render the index page and the function to handle chat requests.
  */
 var indexController = {
+  /**
+   * Handles GET requests for the index route.
+   * Renders the index page.
+   *
+   * @param {object} req - Express request object
+   * @param {object} res - Express response object
+   * @param {function} next - Express next middleware function
+   */
   getIndex: function(req, res, next) {
     res.render('index', { title: 'Express' });
   },
 
   /**
-   * Post chat and get response from AI
+   * Handles POST requests for chat.
+   * Retrieves chat settings from the request, sends them to the AI, and processes the response.
+   *
+   * @param {object} req - Express request object
+   * @param {object} res - Express response object
+   * @param {function} next - Express next middleware function
    */
   postChat: async function(req, res, next) {
-    // Trim and sanitize received messages
     body('messages').trim().escape();
 
-    // Extract variables from request body and environment
-    const { messages, model, token, temperature, top_p, frequency_penalty, presence_penalty } = req.body;
-    const { RESSOURCE_NAME, OPENAI_API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, API_VERSION } = process.env;
+    // Extract request parameters
+    const requestParams = utils.extractRequestParams(req.body);
 
-    // Log received messages
-    console.log("Received user prompt:", messages);
-
-    // Append suffix to user messages
-    const sentMessages = messages.map(message => {
-      if (message.role === 'user') {
-        return {...message, content: message.content + (USER_MESSAGE_SUFFIX || '')};
-      } else {
-        return message;
-      }
-    });
-
-    // Prepend system message
-    if (SYSTEM_MESSAGE) {
-      sentMessages.unshift({role: 'system', content: SYSTEM_MESSAGE});
-    }
-
-    console.log("System message:", SYSTEM_MESSAGE);
+    // Format messages
+    const sentMessages = utils.formatMessages(requestParams.messages);
 
     try {
-      // Prepare request body
-      const requestBody = {
-        model,
-        messages: sentMessages,
-        max_tokens: token,
-        temperature,
-        top_p,
-        frequency_penalty,
-        presence_penalty,
-      };
+      // Make request to AI
+      const response = await utils.makeRequest(requestParams, sentMessages);
 
-      console.log("Request to Azure:", requestBody);
-
-      // Make request to Azure
-      const response = await fetch(`https://${RESSOURCE_NAME}.openai.azure.com/openai/deployments/${model}/chat/completions?${API_VERSION}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': OPENAI_API_KEY,
-        },
-        body: JSON.stringify(requestBody),
-      });
-
-      // Process response
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Response data:", data);
-        res.json(data);
-      } else {
-        const errorData = await response.json();
-        console.error("Error data:", errorData);
-        res.status(response.status).json({ error: `Error: ${response.status}` });
-      }
+      // Process AI response
+      await utils.processResponse(response, res);
     } catch (error) {
-      console.error("Caught error:", error);
-      res.status(500).json({ error: `Error: ${error}` });
+      // Handle error
+      utils.handleError(error, res);
     }
   }
 }
 
-// Exporting the module
+// Export the controller
 module.exports = indexController;

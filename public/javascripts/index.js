@@ -16,52 +16,46 @@ const domElements = {
 };
 
 // Array to hold messages
-// This array will store the chat history
 let messages = [];
 
-// Add this variable to hold your fetch controller
+// Fetch controller
 let controller;
 
-// Event listener for chat form submission
-// Prevents page reload on form submission and calls generateResponse function
-domElements.chatForm.addEventListener('submit', event => {
-  event.preventDefault();
-  generateResponse();
-});
+function showStopButton() {
+  domElements.sendButton.style.display = 'none';
+  domElements.stopButton.style.display = 'block';
+  domElements.stopButton.disabled = false;
+}
 
-/**
- * Asynchronous function to generate a chat response using AI.
- * This function fetches the user's input and the AI model's settings,
- * sends a request to the server, then processes and displays the response.
- */
+function showSendButton() {
+  domElements.stopButton.style.display = 'none';
+  domElements.sendButton.style.display = 'block';
+}
+
+function fetchValues() {
+  const { inputField, modelSelector, tokenInput, temperatureInput, topPInput, frequencyPenaltyInput, presencePenaltyInput } = domElements;
+
+  return {
+    inputText: inputField.value,
+    model: modelSelector.value,
+    token: parseInt(tokenInput.value),
+    temperature: parseFloat(temperatureInput.value),
+    topP: parseFloat(topPInput.value),
+    frequencyPenalty: parseFloat(frequencyPenaltyInput.value),
+    presencePenalty: parseFloat(presencePenaltyInput.value),
+  }
+}
+
 async function generateResponse() {
-  const { chat, inputField, sendButton, stopButton, modelSelector, tokenInput, temperatureInput, topPInput, frequencyPenaltyInput, presencePenaltyInput } = domElements;
+  const { inputText, model, token, temperature, topP, frequencyPenalty, presencePenalty } = fetchValues();
 
-  // Fetch the user's input and the selected model settings
-  const inputText = inputField.value;
-  const model = modelSelector.value;
-  const token = parseInt(tokenInput.value);
-  const temperature = parseFloat(temperatureInput.value);
-  const topP = parseFloat(topPInput.value);
-  const frequencyPenalty = parseFloat(frequencyPenaltyInput.value);
-  const presencePenalty = parseFloat(presencePenaltyInput.value);
-
-  // Display the user's message in the chat
   appendMessageToChat('user', inputText);
+  domElements.inputField.value = '';
+  domElements.inputField.focus();
 
-  // Clear the input field and set focus back to it
-  inputField.value = '';
-  inputField.focus();
-
-  // Create a new AbortController instance and assign it to the controller variable
   controller = new AbortController();
+  showStopButton();
 
-  // Change the send button to stop
-  sendButton.style.display = 'none';
-  stopButton.style.display = 'block';
-  stopButton.disabled = false;
-
-  // Send a POST request to the server with the chat and model settings
   try {
     const response = await fetch('/chat', {
       method: 'POST',
@@ -77,21 +71,16 @@ async function generateResponse() {
         presence_penalty: presencePenalty,
         messages,
       }),
-      signal: controller.signal, // Add this line
+      signal: controller.signal,
     });
 
-    // Change the stop button back to send
-    stopButton.style.display = 'none';
-    sendButton.style.display = 'block';
+    showSendButton();
 
-    // If the response contains an error, throw it
     if (!response.ok) throw response;
 
-    // Parse the response data
     const data = await response.json();
     const outputText = data.choices[0].message.content;
 
-    // Display the AI's message in the chat
     appendMessageToChat('SwagGPT', outputText);
   } catch (error) {
     if (error.name === 'AbortError') {
@@ -100,70 +89,35 @@ async function generateResponse() {
       console.error(`Error: ${error.statusText || error}`);
     }
   }
+
+  // Event listener for stopButton click
+  domElements.stopButton.addEventListener('click', () => {
+    if (controller) controller.abort();
+    appendMessageToChat('assistant', outputText);
+    showSendButton();
+  });
 }
 
-/**
- * Function to append a message to the chat and the messages array.
- * @param {string} role - The role of the message sender. It should be 'user' or 'assistant'.
- * @param {string} message - The message content.
- */
 function appendMessageToChat(role, message) {
-  // If the role is 'user', display 'You' in the chat. Otherwise, display 'SwagGPT'.
   const displayRole = role === 'user' ? 'You' : 'SwagGPT';
   domElements.chat.insertAdjacentHTML('beforeend', `<li>${displayRole}: ${message}</li>`);
 
-  // But in the messages array, use 'assistant' as the role when it's not 'user'.
   const apiRole = role === 'user' ? 'user' : 'assistant';
   messages.push({ role: apiRole, content: message });
 }
-// Add this function to handle stop button click
-domElements.stopButton.addEventListener('click', () => {
-  if (controller) controller.abort();
 
-// Display the AI's message in the chat
-  appendMessageToChat('assistant', outputText);
+function setupEventListeners() {
+  domElements.chatForm.addEventListener('submit', event => {
+    event.preventDefault();
+    generateResponse();
+  });
 
-  // Change the stop button back to send
-  domElements.stopButton.style.display = 'none';
-  domElements.sendButton.style.display = 'block';
-});
-
-function scrollValue(event) {
-  // Prevent page from scrolling
-  event.preventDefault();
-
-  // Determine the scroll direction (down or up)
-  const direction = event.deltaY < 0 ? 1 : -1;
-
-  // Get the step attribute value of the input field
-  const step = parseFloat(event.target.step);
-
-  // Calculate new value
-  let newValue = parseFloat(event.target.value) + (step * direction);
-
-  // Set the new value within the min and max range
-  if (newValue < event.target.min) {
-    newValue = event.target.min;
-  } else if (newValue > event.target.max) {
-    newValue = event.target.max;
-  }
-
-  // Set the input field's new value, limit decimal precision with toFixed()
-  if (event.target.step.includes('.')) {
-    const decimalPoints = event.target.step.split('.')[1].length;
-    event.target.value = newValue.toFixed(decimalPoints);
-  } else {
-    event.target.value = newValue;
-  }
+  domElements.inputField.addEventListener('keydown', event => {
+    if (event.ctrlKey && event.key === 'Enter') {
+      event.preventDefault();
+      generateResponse();
+    }
+  });
 }
 
-// Event listener for chat form submission
-domElements.inputField.addEventListener('keydown', event => {
-  // If both Ctrl and Enter keys were pressed
-  if (event.ctrlKey && event.key === 'Enter') {
-    // Prevent the default action (line break in the textarea)
-    event.preventDefault();
-    // Call the generateResponse function directly
-    generateResponse();
-  }
-});
+setupEventListeners();
