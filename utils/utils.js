@@ -18,9 +18,9 @@ module.exports = {
    */
   extractRequestParams: function(body) {
     const { messages, model, token, temperature, top_p, frequency_penalty, presence_penalty } = body;
-    const { RESSOURCE_NAME, OPENAI_API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, API_VERSION } = process.env;
+    const { RESSOURCE_NAME, API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, API_VERSION } = process.env;
 
-    return { messages, model, token, temperature, top_p, frequency_penalty, presence_penalty, RESSOURCE_NAME, OPENAI_API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, API_VERSION };
+    return { messages, model, token, temperature, top_p, frequency_penalty, presence_penalty, RESSOURCE_NAME, API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, API_VERSION };
   },
 
   /**
@@ -56,7 +56,7 @@ module.exports = {
    * @returns {object} - The response from the AI
    */
   makeRequest: async function(requestParams, sentMessages) {
-    const { model, token, temperature, top_p, frequency_penalty, presence_penalty, RESSOURCE_NAME, OPENAI_API_KEY, API_VERSION } = requestParams;
+    const { model, token, temperature, top_p, frequency_penalty, presence_penalty, RESSOURCE_NAME, API_KEY, API_VERSION } = requestParams;
 
     const requestBody = {
       model,
@@ -74,7 +74,7 @@ module.exports = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'api-key': OPENAI_API_KEY,
+        'api-key': API_KEY,
       },
       body: JSON.stringify(requestBody),
     });
