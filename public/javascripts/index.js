@@ -22,6 +22,9 @@ let messages = [];
 // Fetch controller
 let controller;
 
+// Boolean to keep track of whether a request is being processed
+let isProcessing = false;
+
 function showStopButton() {
   domElements.sendButton.style.display = 'none';
   domElements.stopButton.style.display = 'block';
@@ -48,6 +51,7 @@ function fetchValues() {
 }
 
 async function generateResponse() {
+  isProcessing = true;
   const { inputText, model, token, temperature, topP, frequencyPenalty, presencePenalty } = fetchValues();
 
   appendMessageToChat('user', inputText);
@@ -74,7 +78,8 @@ async function generateResponse() {
       }),
       signal: controller.signal,
     });
-
+    // Re-enable the send button
+    isProcessing = false;
     showSendButton();
 
     if (!response.ok) throw response;
@@ -110,16 +115,19 @@ function appendMessageToChat(role, message) {
 function setupEventListeners() {
   domElements.chatForm.addEventListener('submit', event => {
     event.preventDefault();
-    generateResponse();
-    domElements.tokenInput.addEventListener('wheel', scrollValue);
-    domElements.temperatureInput.addEventListener('wheel', scrollValue);
-    domElements.topPInput.addEventListener('wheel', scrollValue);
-    domElements.frequencyPenaltyInput.addEventListener('wheel', scrollValue);
-    domElements.presencePenaltyInput.addEventListener('wheel', scrollValue);
+    if (!isProcessing) {
+      generateResponse();
+    }
   });
 
+  domElements.tokenInput.addEventListener('wheel', scrollValue);
+  domElements.temperatureInput.addEventListener('wheel', scrollValue);
+  domElements.topPInput.addEventListener('wheel', scrollValue);
+  domElements.frequencyPenaltyInput.addEventListener('wheel', scrollValue);
+  domElements.presencePenaltyInput.addEventListener('wheel', scrollValue);
+
   domElements.inputField.addEventListener('keydown', event => {
-    if (event.ctrlKey && event.key === 'Enter') {
+    if (event.ctrlKey && event.key === 'Enter' && !isProcessing) {
       event.preventDefault();
       generateResponse();
     }
