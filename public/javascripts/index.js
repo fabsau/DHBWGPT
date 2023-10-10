@@ -13,6 +13,7 @@ const domElements = {
   chat: document.getElementById('chat'),
   sendButton: document.getElementById('sendButton'),
   stopButton: document.getElementById('stopButton')
+
 };
 
 // Array to hold messages
@@ -110,6 +111,11 @@ function setupEventListeners() {
   domElements.chatForm.addEventListener('submit', event => {
     event.preventDefault();
     generateResponse();
+    domElements.tokenInput.addEventListener('wheel', scrollValue);
+    domElements.temperatureInput.addEventListener('wheel', scrollValue);
+    domElements.topPInput.addEventListener('wheel', scrollValue);
+    domElements.frequencyPenaltyInput.addEventListener('wheel', scrollValue);
+    domElements.presencePenaltyInput.addEventListener('wheel', scrollValue);
   });
 
   domElements.inputField.addEventListener('keydown', event => {
@@ -159,3 +165,24 @@ document.getElementById('system-settings-button').addEventListener('click', getS
 
 // Event listener for save button click in the modal
 document.getElementById('save-settings-button').addEventListener('click', updateSettings);
+
+function scrollValue(event) {
+  const step = parseFloat(event.target.step);
+  const min = parseFloat(event.target.min);
+  const max = parseFloat(event.target.max);
+  let value = parseFloat(event.target.value);
+
+  if (event.deltaY < 0) {
+    value = Math.min(value + step, max);
+  } else {
+    value = Math.max(value - step, min);
+  }
+
+  // Check if the input field is for 'token', if so, round the value
+  if (event.target.id === 'token-input') {
+    event.target.value = Math.round(value);
+  } else {
+    event.target.value = value.toFixed(1);
+  }
+  event.preventDefault();
+}
