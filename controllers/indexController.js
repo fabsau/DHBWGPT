@@ -1,3 +1,4 @@
+// /controllers/indexController.js
 // Import required modules
 const express = require('express');
 const { body } = require('express-validator');
@@ -53,6 +54,41 @@ var indexController = {
       // Handle error
       utils.handleError(error, res);
     }
+  },
+  /**
+   * Handles GET requests for system settings.
+   * Sends the system settings to the client.
+   *
+   * @param {object} req - Express request object
+   * @param {object} res - Express response object
+   * @param {function} next - Express next middleware function
+   */
+  getSettings: function(req, res, next) {
+    res.json({
+      system_message: process.env.SYSTEM_MESSAGE,
+      user_message_suffix: process.env.USER_MESSAGE_SUFFIX,
+    });
+  },
+
+  /**
+   * Handles POST requests for system settings.
+   * Updates the system settings with the provided values.
+   *
+   * @param {object} req - Express request object
+   * @param {object} res - Express response object
+   * @param {function} next - Express next middleware function
+   */
+  updateSettings: async function(req, res, next) {
+    console.log("UPDATE Settings request received with data:", req.body);
+    const { system_message, user_message_suffix } = req.body;
+
+    if(system_message) process.env.SYSTEM_MESSAGE = system_message;
+    if(user_message_suffix) process.env.USER_MESSAGE_SUFFIX = user_message_suffix;
+
+    res.json({
+      status: "success",
+      message: "Settings updated successfully"
+    });
   }
 }
 

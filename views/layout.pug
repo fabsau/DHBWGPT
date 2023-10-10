@@ -14,6 +14,24 @@ html
         a.navbar-brand.d-flex.align-items-center(href="/")
           span.bs-icon-sm.bs-icon-rounded.bs-icon-primary.d-flex.justify-content-center.align-items-center.me-2
           span &nbsp;DHBW-GPT
+        button#system-settings-button.btn.btn-secondary(type='button' data-bs-toggle='modal' data-bs-target='#settingsModal') System Settings
+    .modal.fade#settingsModal(tabindex='-1' aria-labelledby='settingsModalLabel' aria-hidden='true')
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            h5#settingsModalLabel.modal-title System Settings
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            form
+              .mb-3
+                label(for='system-message-input') System Message
+                textarea#system-message-input.form-control.rows=3
+              .mb-3
+                label(for='user-message-suffix-input') User Message Suffix
+                textarea#user-message-suffix-input.form-control.rows=3
+          .modal-footer
+            button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
+            button#save-settings-button.btn.btn-primary(type='button') Save
 
     block content
 

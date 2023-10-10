@@ -121,3 +121,41 @@ function setupEventListeners() {
 }
 
 setupEventListeners();
+
+async function getSettings() {
+  const response = await fetch('/settings');
+  const data = await response.json();
+
+  // Set the value of the input fields in the modal
+  document.getElementById('system-message-input').value = data.system_message;
+  document.getElementById('user-message-suffix-input').value = data.user_message_suffix;
+}
+
+async function updateSettings() {
+  const system_message = document.getElementById('system-message-input').value;
+  const user_message_suffix = document.getElementById('user-message-suffix-input').value;
+
+  const response = await fetch('/settings', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      system_message,
+      user_message_suffix
+    }),
+  });
+
+  const data = await response.json();
+
+  if (data.status === 'success') {
+    console.log(data.message);
+    $('#settingsModal').modal('hide');
+  }
+}
+
+// Event listener for system settings button click
+document.getElementById('system-settings-button').addEventListener('click', getSettings);
+
+// Event listener for save button click in the modal
+document.getElementById('save-settings-button').addEventListener('click', updateSettings);
