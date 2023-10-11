@@ -13,7 +13,6 @@ const domElements = {
   chat: document.getElementById('chat'),
   sendButton: document.getElementById('sendButton'),
   stopButton: document.getElementById('stopButton')
-
 };
 
 // Array to hold messages
@@ -78,9 +77,6 @@ async function generateResponse() {
       }),
       signal: controller.signal,
     });
-    // Re-enable the send button
-    isProcessing = false;
-    showSendButton();
 
     if (!response.ok) throw response;
 
@@ -94,14 +90,12 @@ async function generateResponse() {
     } else {
       console.error(`Error: ${error.statusText || error}`);
     }
-  }
-
-  // Event listener for stopButton click
-  domElements.stopButton.addEventListener('click', () => {
-    if (controller) controller.abort();
-    appendMessageToChat('assistant', outputText);
+  } finally {
+    // Re-enable the send button
+    isProcessing = false;
     showSendButton();
-  });
+    controller = null; // Reset the controller
+  }
 }
 
 function appendMessageToChat(role, message) {
@@ -118,6 +112,10 @@ function setupEventListeners() {
     if (!isProcessing) {
       generateResponse();
     }
+  });
+
+  domElements.stopButton.addEventListener('click', () => {
+    if (controller) controller.abort();
   });
 
   domElements.tokenInput.addEventListener('wheel', scrollValue);
