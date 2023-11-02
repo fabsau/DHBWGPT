@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94443d73-a7c0-4639-a4fe-2ffdc53b237a" name="Changes" comment="Delete node_modules" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2WWmH605wAU6FjUwWMp4yu9zZUu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.nodejs.core.library.configured.version": "18.17.1",
+    "javascript.nodejs.core.library.typings.version": "18.17.1",
+    "last_opened_file_path": "C:/Users/asauna9674/Documents/DHBWGPT",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asauna9674\Documents\DHBWGPT" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="94443d73-a7c0-4639-a4fe-2ffdc53b237a" name="Changes" comment="" />
+      <created>1696856623377</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696856623377</updated>
+      <workItem from="1696856624852" duration="33498000" />
+      <workItem from="1696897140641" duration="4071000" />
+      <workItem from="1696969258156" duration="8992000" />
+      <workItem from="1697977793829" duration="170000" />
+      <workItem from="1698752247506" duration="3689000" />
+      <workItem from="1698918140994" duration="717000" />
+      <workItem from="1698920616504" duration="2632000" />
+      <workItem from="1698924547998" duration="411000" />
+      <workItem from="1698924978041" duration="118000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial Commit2">
+      <option name="closed" value="true" />
+      <created>1696880916628</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696880916628</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fixing stuff">
+      <option name="closed" value="true" />
+      <created>1696892561863</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696892561864</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Refactor">
+      <option name="closed" value="true" />
+      <created>1696895429460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696895429460</updated>
+    </task>
+    <task id="LOCAL-00004" summary="System Settings Popup">
+      <option name="closed" value="true" />
+      <created>1696896548794</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696896548794</updated>
+    </task>
+    <task id="LOCAL-00005" summary="System Settings Popup">
+      <option name="closed" value="true" />
+      <created>1696897032786</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696897032786</updated>
+    </task>
+    <task id="LOCAL-00006" summary="System Settings Popup">
+      <option name="closed" value="true" />
+      <created>1696897038059</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696897038059</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Rename variable">
+      <option name="closed" value="true" />
+      <created>1696900222255</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696900222255</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Create Readme.MD">
+      <option name="closed" value="true" />
+      <created>1696900230676</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696900230676</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Adjust values by scrolling">
+      <option name="closed" value="true" />
+      <created>1696900242063</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696900242063</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Update Favicons">
+      <option name="closed" value="true" />
+      <created>1696900886044</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696900886044</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add more favicons">
+      <option name="closed" value="true" />
+      <created>1696900931617</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696900931617</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add more favicons">
+      <option name="closed" value="true" />
+      <created>1696900939865</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696900939865</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fix favicons">
+      <option name="closed" value="true" />
+      <created>1696901218983</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1696901218983</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added documentation and adding functionality to wait for processing to finish before a message can be resent">
+      <option name="closed" value="true" />
+      <created>1696971371635</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696971371635</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Fix stop button">
+      <option name="closed" value="true" />
+      <created>1697011887781</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1697011887781</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Update gitignore">
+      <option name="closed" value="true" />
+      <created>1698923403277</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1698923403277</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update gitignore">
+      <option name="closed" value="true" />
+      <created>1698923775837</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1698923775837</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Update gitignore">
+      <option name="closed" value="true" />
+      <created>1698923976439</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1698923976439</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1698924401381</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1698924401381</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Delete node_modules">
+      <option name="closed" value="true" />
+      <created>1698924570494</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1698924570494</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Commit2" />
+    <MESSAGE value="Fixing stuff" />
+    <MESSAGE value="Refactor" />
+    <MESSAGE value="System Settings Popup" />
+    <MESSAGE value="Rename variable" />
+    <MESSAGE value="Create Readme.MD" />
+    <MESSAGE value="Adjust values by scrolling" />
+    <MESSAGE value="Update Favicons" />
+    <MESSAGE value="Add more favicons" />
+    <MESSAGE value="Fix favicons" />
+    <MESSAGE value="Added documentation and adding functionality to wait for processing to finish before a message can be resent" />
+    <MESSAGE value="Fix stop button" />
+    <MESSAGE value="Update gitignore" />
+    <MESSAGE value="Commit" />
+    <MESSAGE value="Delete node_modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete node_modules" />
+  </component>
+</project>
