@@ -173,10 +173,13 @@ document.getElementById('system-settings-button').addEventListener('click', getS
 document.getElementById('save-settings-button').addEventListener('click', updateSettings);
 
 function scrollValue(event) {
-  const step = parseFloat(event.target.step);
-  const min = parseFloat(event.target.min);
-  const max = parseFloat(event.target.max);
-  let value = parseFloat(event.target.value);
+  event.preventDefault();
+
+  const step = parseFloat(event.target.step) || 1;
+  const min = parseFloat(event.target.min) || -Infinity;
+  const max = parseFloat(event.target.max) || Infinity;
+
+  let value = parseFloat(event.target.value) || 0;
 
   if (event.deltaY < 0) {
     value = Math.min(value + step, max);
@@ -184,11 +187,5 @@ function scrollValue(event) {
     value = Math.max(value - step, min);
   }
 
-  // Check if the input field is for 'token', if so, round the value
-  if (event.target.id === 'token-input') {
-    event.target.value = Math.round(value);
-  } else {
-    event.target.value = value.toFixed(1);
-  }
-  event.preventDefault();
+  event.target.value = value.toFixed(1);
 }
