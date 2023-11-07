@@ -34,7 +34,7 @@ module.exports = {
 
     let sentMessages = messages.map(message => {
       if (message.role === 'user') {
-        return {...message, content: message.content + (process.env.USER_MESSAGE_SUFFIX || '')};
+        return {...message, content: message.content + "/n" + (process.env.USER_MESSAGE_SUFFIX || '')};
       } else {
         return message;
       }
