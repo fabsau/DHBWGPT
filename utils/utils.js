@@ -56,7 +56,7 @@ module.exports = {
    * @returns {object} - The response from the AI
    */
   makeRequest: async function(requestParams, sentMessages) {
-    const { model, token, temperature, top_p, frequency_penalty, presence_penalty, AZURE_RESSOURCE_NAME, API_KEY, AZURE_API_VERSION } = requestParams;
+    const { model, token, temperature, top_p, frequency_penalty, presence_penalty, AZURE_RESSOURCE_NAME, CUSTOM_ENDPOINT, API_KEY, AZURE_API_VERSION } = requestParams;
 
     const requestBody = {
       model,
@@ -86,6 +86,13 @@ module.exports = {
       headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${API_KEY}`,
+      };
+    } else if (BACKEND === 'CUSTOM') {
+      console.log("Request to custom backend:", requestBody);
+      url = CUSTOM_ENDPOINT;
+      headers = {
+        'Content-Type': 'application/json',
+        'api-key': API_KEY,
       };
     } else {
       throw new Error(`Invalid backend: ${BACKEND}`);

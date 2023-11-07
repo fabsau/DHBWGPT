@@ -195,3 +195,17 @@ function scrollValue(event) {
 
   event.target.value = value.toFixed(1);
 }
+
+// Event listener for endpoint selection
+document.addEventListener('DOMContentLoaded', function() {
+  // Event listener for endpoint selection
+  document.getElementById('endpoint-selector').addEventListener('change', function() {
+    const customEndpointInput = document.getElementById('custom-endpoint-input');
+
+    if (this.value === 'CUSTOM') {
+      customEndpointInput.style.display = 'block';
+    } else {
+      customEndpointInput.style.display = 'none';
+    }
+  });
+});
