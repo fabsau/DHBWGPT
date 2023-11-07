@@ -181,9 +181,24 @@ document.getElementById('save-settings-button').addEventListener('click', update
 function scrollValue(event) {
   event.preventDefault();
 
-  const step = parseFloat(event.target.step) || 1;
-  const min = parseFloat(event.target.min) || -Infinity;
-  const max = parseFloat(event.target.max) || Infinity;
+  let step = 0.05;
+  let min = 0;
+  let max = 0;
+
+  if (event.target.id === 'token-input') {
+    step = 0.5;
+    min = 0;
+    max = 32768;
+  } else if (event.target.id === 'temperature-input') {
+    min = 0.0;
+    max = 2.0;
+  } else if (event.target.id === 'top-p-input') {
+    min = 0.0;
+    max = 1.0;
+  } else if (event.target.id === 'frequency-penalty-input' || event.target.id === 'presence-penalty-input') {
+    min = -2.0;
+    max = 2.0;
+  }
 
   let value = parseFloat(event.target.value) || 0;
 
@@ -193,8 +208,16 @@ function scrollValue(event) {
     value = Math.max(value - step, min);
   }
 
-  event.target.value = value.toFixed(1);
+  let valueStr = (value % 1 === 0) ? value.toString() : value.toFixed(2);
+
+  // Remove trailing zero in the decimal part
+  if (valueStr.slice(-1) === '0' && valueStr.includes('.')) {
+    valueStr = valueStr.slice(0, -1);
+  }
+
+  event.target.value = valueStr;
 }
+
 
 // Event listener for endpoint selection
 document.addEventListener('DOMContentLoaded', function() {
