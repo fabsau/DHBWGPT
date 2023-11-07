@@ -68,18 +68,18 @@ module.exports = {
       presence_penalty,
     };
 
-    // Choose the backend URL based on the environment variable
-    const BACKEND = process.env.BACKEND || 'AZURE';
+    // Choose the ENDPOINT URL based on the environment variable
+    const ENDPOINT = process.env.ENDPOINT || 'AZURE';
     let url, headers;
 
-    if (BACKEND === 'AZURE') {
+    if (ENDPOINT === 'AZURE') {
       console.log("Request to Azure:", requestBody);
       url = `https://${AZURE_RESSOURCE_NAME}.openai.azure.com/openai/deployments/${model}/chat/completions?${AZURE_API_VERSION}`;
       headers = {
         'Content-Type': 'application/json',
         'api-key': API_KEY,
       };
-    } else if (BACKEND === 'OPENAI') {
+    } else if (ENDPOINT === 'OPENAI') {
       console.log("Request to OpenAI:", requestBody);
       requestBody.model = model.replace('35', '3.5'); // Correct the model name for OpenAI
       url = `https://api.openai.com/v1/chat/completions`;
@@ -87,15 +87,15 @@ module.exports = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${API_KEY}`,
       };
-    } else if (BACKEND === 'CUSTOM') {
-      console.log("Request to custom backend:", requestBody);
+    } else if (ENDPOINT === 'CUSTOM') {
+      console.log("Request to custom endpoint:", requestBody);
       url = CUSTOM_ENDPOINT;
       headers = {
         'Content-Type': 'application/json',
         'api-key': API_KEY,
       };
     } else {
-      throw new Error(`Invalid backend: ${BACKEND}`);
+      throw new Error(`Invalid endpoint: ${ENDPOINT}`);
     }
 
     return await fetch(url, {

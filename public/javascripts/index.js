@@ -78,8 +78,6 @@ async function generateResponse() {
       signal: controller.signal,
     });
 
-    if (!response.ok) throw response;
-
     const data = await response.json();
     const outputText = data.choices[0].message.content;
 
@@ -140,6 +138,7 @@ async function getSettings() {
 
   // Set the value of the input fields in the modal
   document.getElementById('endpoint-selector').value = data.endpoint;
+  document.getElementById('custom-endpoint-input').value = data.custom_endpoint || '';
   document.getElementById('api-key-input').value = data.api_key;
   document.getElementById('system-message-input').value = data.system_message;
   document.getElementById('user-message-suffix-input').value = data.user_message_suffix;
@@ -147,6 +146,7 @@ async function getSettings() {
 
 async function updateSettings() {
   const endpoint = document.getElementById('endpoint-selector').value;
+  const custom_endpoint = document.getElementById('custom-endpoint-input').value;
   const api_key = document.getElementById('api-key-input').value;
   const system_message = document.getElementById('system-message-input').value;
   const user_message_suffix = document.getElementById('user-message-suffix-input').value;
@@ -158,6 +158,7 @@ async function updateSettings() {
     },
     body: JSON.stringify({
       endpoint,
+      custom_endpoint,
       system_message,
       user_message_suffix,
       api_key
@@ -223,7 +224,7 @@ function scrollValue(event) {
 document.addEventListener('DOMContentLoaded', function() {
   // Event listener for endpoint selection
   document.getElementById('endpoint-selector').addEventListener('change', function() {
-    const customEndpointInput = document.getElementById('custom-endpoint-input');
+    const customEndpointInput = document.getElementById('custom-endpoint-div');
 
     if (this.value === 'CUSTOM') {
       customEndpointInput.style.display = 'block';
