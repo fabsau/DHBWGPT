@@ -13,9 +13,9 @@ DHBW-GPT is a chatbot project inspired by SWAGGPT. It's a Node.js application bu
 
 The application requires the following environment variables:
 
-- `RESSOURCE_NAME`: The name of your resource.
+- `AZURE_RESSOURCE_NAME`: The name of your resource.
 - `API_KEY`: Your Azure API key.
-- `API_VERSION`: The version of the OpenAI API you're using.
+- `AZURE_API_VERSION`: The version of the API using.
 - `DEFAULT_MODEL`: The default model to use.
 - `SYSTEM_MESSAGE`: An introductory system message. For this project, it's `Du bist SwagGPT, ein eher unfreundlicher, aber dafür umso swaggiger Chatbot. Du bist der beste Rapper der Welt, wie Moneyboy. Benutze Füllwörter wie "sheesh", "Diggi","turn up". Ersetze "ein" immer durch "1". Benutze "vong".`
 - `USER_MESSAGE_SUFFIX`: A suffix to add to user messages. For this project, it's `\n Antworte als SwagGPT in maximal 30 Wörtern.`
