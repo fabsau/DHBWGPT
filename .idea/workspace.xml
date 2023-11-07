@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94443d73-a7c0-4639-a4fe-2ffdc53b237a" name="Changes" comment="Fix debugging messages">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="94443d73-a7c0-4639-a4fe-2ffdc53b237a" name="Changes" comment="Fixed that Custom Endpoint title was always visible in the modal.">
       <change beforePath="$PROJECT_DIR$/Readme.MD" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/indexController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/indexController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +80,7 @@
       <workItem from="1698924547998" duration="411000" />
       <workItem from="1698924978041" duration="118000" />
       <workItem from="1698925116294" duration="1649000" />
-      <workItem from="1699270295592" duration="15616000" />
+      <workItem from="1699270295592" duration="15914000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit2">
       <option name="closed" value="true" />
@@ -327,7 +322,31 @@
       <option name="project" value="LOCAL" />
       <updated>1699394093806</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Move the /n inside the code for the User Suffix Message">
+      <option name="closed" value="true" />
+      <created>1699396857126</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1699396857126</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Update IntelliJ workspace">
+      <option name="closed" value="true" />
+      <created>1699396873888</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1699396873888</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Fixed that Custom Endpoint title was always visible in the modal.">
+      <option name="closed" value="true" />
+      <created>1699396943483</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1699396943483</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,6 +397,9 @@
     <MESSAGE value="Add Custom Endpoint handling" />
     <MESSAGE value="Fix Scrolling bugs - apply min/max values, round numbers properly" />
     <MESSAGE value="Fix debugging messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix debugging messages" />
+    <MESSAGE value="Move the /n inside the code for the User Suffix Message" />
+    <MESSAGE value="Update IntelliJ workspace" />
+    <MESSAGE value="Fixed that Custom Endpoint title was always visible in the modal." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed that Custom Endpoint title was always visible in the modal." />
   </component>
 </project>
