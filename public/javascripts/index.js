@@ -139,11 +139,15 @@ async function getSettings() {
   const data = await response.json();
 
   // Set the value of the input fields in the modal
+  document.getElementById('endpoint-selector').value = data.endpoint;
+  document.getElementById('api-key-input').value = data.api_key;
   document.getElementById('system-message-input').value = data.system_message;
   document.getElementById('user-message-suffix-input').value = data.user_message_suffix;
 }
 
 async function updateSettings() {
+  const endpoint = document.getElementById('endpoint-selector').value;
+  const api_key = document.getElementById('api-key-input').value;
   const system_message = document.getElementById('system-message-input').value;
   const user_message_suffix = document.getElementById('user-message-suffix-input').value;
 
@@ -153,8 +157,10 @@ async function updateSettings() {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
+      endpoint,
       system_message,
-      user_message_suffix
+      user_message_suffix,
+      api_key
     }),
   });
 
