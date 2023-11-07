@@ -1,8 +1,6 @@
 // /controllers/indexController.js
 // Import required modules
-const express = require('express');
 const { body } = require('express-validator');
-const fetch = require('node-fetch');
 
 // Import local modules
 const utils = require('../utils/utils');
@@ -14,16 +12,15 @@ require('dotenv').config();
  * This controller handles requests for the index route.
  * It includes the function to render the index page and the function to handle chat requests.
  */
-var indexController = {
+const indexController = {
   /**
    * Handles GET requests for the index route.
    * Renders the index page.
    *
    * @param {object} req - Express request object
    * @param {object} res - Express response object
-   * @param {function} next - Express next middleware function
    */
-  getIndex: function(req, res, next) {
+  getIndex: function(req, res) {
     res.render('index', { title: 'Express' });
   },
 
@@ -33,9 +30,8 @@ var indexController = {
    *
    * @param {object} req - Express request object
    * @param {object} res - Express response object
-   * @param {function} next - Express next middleware function
    */
-  postChat: async function(req, res, next) {
+  postChat: async function(req, res) {
     body('messages').trim().escape();
 
     // Extract request parameters
@@ -61,9 +57,8 @@ var indexController = {
    *
    * @param {object} req - Express request object
    * @param {object} res - Express response object
-   * @param {function} next - Express next middleware function
    */
-  getSettings: function(req, res, next) {
+  getSettings: function(req, res) {
     res.json({
       endpoint: process.env.ENDPOINT,
       custom_endpoint: process.env.CUSTOM_ENDPOINT,
@@ -79,9 +74,8 @@ var indexController = {
    *
    * @param {object} req - Express request object
    * @param {object} res - Express response object
-   * @param {function} next - Express next middleware function
    */
-  updateSettings: async function(req, res, next) {
+  updateSettings: async function(req, res) {
     console.log("UPDATE Settings request received with data:", req.body);
     const { endpoint, custom_endpoint, api_key, system_message, user_message_suffix } = req.body;
     if(endpoint) process.env.ENPOINT = endpoint;
