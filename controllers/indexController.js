@@ -78,7 +78,7 @@ const indexController = {
   updateSettings: async function(req, res) {
     console.log("UPDATE Settings request received with data:", req.body);
     const { endpoint, custom_endpoint, api_key, system_message, user_message_suffix } = req.body;
-    if(endpoint) process.env.ENPOINT = endpoint;
+    if(endpoint) process.env.ENDPOINT = endpoint;
     if(custom_endpoint) process.env.CUSTOM_ENDPOINT = custom_endpoint;
     if(api_key) process.env.API_KEY = api_key;
     if(system_message) process.env.SYSTEM_MESSAGE = system_message;
