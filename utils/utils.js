@@ -120,7 +120,7 @@ module.exports = {
     } else {
       const errorData = await response.json();
       console.error("Error data:", errorData);
-      res.status(response.status).json({ error: `Error: ${response.status}`, message: errorData.message });
+      res.status(response.status).json({ error: `Error: ${response.status}`, message: errorData.error.message });
     }
   },
 

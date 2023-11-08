@@ -79,9 +79,13 @@ async function generateResponse() {
     });
 
     const data = await response.json();
-    const outputText = data.choices[0].message.content;
 
-    appendMessageToChat('SwagGPT', outputText);
+    if (data.error) { // New block to handle error messages
+      appendMessageToChat('Error', data.message); // Append error message to the chat
+    } else {
+      const outputText = data.choices[0].message.content;
+      appendMessageToChat('SwagGPT', outputText);
+    }
   } catch (error) {
     if (error.name === 'AbortError') {
       console.log('Fetch aborted');
@@ -95,7 +99,6 @@ async function generateResponse() {
     controller = null; // Reset the controller
   }
 }
-
 function appendMessageToChat(role, message) {
   const displayRole = role === 'user' ? 'You' : 'SwagGPT';
   domElements.chat.insertAdjacentHTML('beforeend', `<li>${displayRole}: ${message}</li>`);
