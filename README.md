@@ -3,7 +3,7 @@
 DHBWGPT is an adaptable ChatGPT frontend web client that interfaces with Azure OpenAI, OpenAI, or a custom API endpoint to generate AI-powered chat responses. The application is built with Node.js, Express.js, Pug and Bootstrap, providing a responsive and user-friendly interface.
 
 ![Screenshot](https://github.com/fabsau/DHBWGPT/assets/2856122/59ad40f1-2eb7-416f-b471-510d3dccc9e1)
-*The screenshot above provides a visual representation of the application. You can access a live demo at [https://demo-dhbwgpt.sauna.re](https://demo-dhbwgpt.sauna.re)*
+*Please visit our live demo at [https://demo-dhbwgpt.sauna.re](https://demo-dhbwgpt.sauna.re). Be aware that chat functionality is disabled in this version, as no API-Key is provided for the demo instance.*
 
 ## Features
 
