@@ -116,6 +116,7 @@ module.exports = {
     if (response.ok) {
       const data = await response.json();
       console.log("Response data:", data);
+      console.log("AI Response:", data.choices[0].message.content);
       res.json(data);
     } else {
       const errorData = await response.json();
