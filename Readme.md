@@ -6,7 +6,6 @@ DHBWGPT is an adaptable ChatGPT frontend web client that interfaces with Azure O
 
 - Supports the OpenAI models `GPT 3.5 Turbo`, `GPT 3.5 Turbo 16K`, `GPT-4`, and `GPT-4 32K`.
 - Provides customization options, including the selection of the model, adjustment of response length (maximum tokens), control over the randomness and diversity of responses (temperature and top P values), and tuning of frequency and presence penalties.
-- Includes a user-friendly GUI for tailoring system messages and user message suffixes.
 - Enables users to modify System Settings such as the chat endpoint (be it Azure OpenAI, OpenAI, or a custom defined endpoint), the system message, and user message suffix. These adjustments can be made either through environment variables or directly within the web application.
 - Features a responsive frontend designed with Pug and Bootstrap for seamless usage across different devices.
 
