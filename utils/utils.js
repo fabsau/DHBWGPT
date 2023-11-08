@@ -1,4 +1,4 @@
-//utils/utils.js
+// utils/utils.js
 // Import required modules
 const fetch = require('node-fetch');
 
@@ -17,10 +17,11 @@ module.exports = {
    * @returns {object} - The extracted request parameters
    */
   extractRequestParams: function(body) {
+    // Extract request parameters from the request body and environment variables
     const { messages, model, token, temperature, top_p, frequency_penalty, presence_penalty } = body;
-    const { AZURE_RESSOURCE_NAME, API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, AZURE_API_VERSION } = process.env;
+    const { AZURE_RESOURCE_NAME, API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, AZURE_API_VERSION } = process.env;
 
-    return { messages, model, token, temperature, top_p, frequency_penalty, presence_penalty, AZURE_RESSOURCE_NAME, API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, AZURE_API_VERSION };
+    return { messages, model, token, temperature, top_p, frequency_penalty, presence_penalty, AZURE_RESOURCE_NAME, API_KEY, SYSTEM_MESSAGE, USER_MESSAGE_SUFFIX, AZURE_API_VERSION };
   },
 
   /**
@@ -30,6 +31,7 @@ module.exports = {
    * @returns {array} - The formatted messages
    */
   formatMessages: function(messages) {
+    // Format the messages by appending the user message suffix and prepending the system message
     console.log("Received user prompt:", messages);
 
     let sentMessages = messages.map(message => {
@@ -56,7 +58,8 @@ module.exports = {
    * @returns {object} - The response from the AI
    */
   makeRequest: async function(requestParams, sentMessages) {
-    const { model, token, temperature, top_p, frequency_penalty, presence_penalty, AZURE_RESSOURCE_NAME, CUSTOM_ENDPOINT, API_KEY, AZURE_API_VERSION } = requestParams;
+    // Make a request to the AI with the given request parameters and messages
+    const { model, token, temperature, top_p, frequency_penalty, presence_penalty, AZURE_RESOURCE_NAME, CUSTOM_ENDPOINT, API_KEY, AZURE_API_VERSION } = requestParams;
 
     const requestBody = {
       model,
@@ -68,13 +71,13 @@ module.exports = {
       presence_penalty,
     };
 
-    // Choose the ENDPOINT URL based on the environment variable
+    // Define the endpoint and URL to be used based on the environment variable `ENDPOINT`
     const ENDPOINT = process.env.ENDPOINT || 'AZURE';
     let url, headers;
 
     if (ENDPOINT === 'AZURE') {
       console.log("Request to Azure:", requestBody);
-      url = `https://${AZURE_RESSOURCE_NAME}.openai.azure.com/openai/deployments/${model}/chat/completions?${AZURE_API_VERSION}`;
+      url = `https://${AZURE_RESOURCE_NAME}.openai.azure.com/openai/deployments/${model}/chat/completions?${AZURE_API_VERSION}`;
       headers = {
         'Content-Type': 'application/json',
         'api-key': API_KEY,
@@ -105,7 +108,6 @@ module.exports = {
     });
   },
 
-
   /**
    * Processes the response from the AI.
    *
@@ -113,6 +115,7 @@ module.exports = {
    * @param {object} res - The Express response object
    */
   processResponse: async function(response, res) {
+    // Process the response from the AI and send the processed response to the client
     if (response.ok) {
       const data = await response.json();
       console.log("Response data:", data);
@@ -132,6 +135,7 @@ module.exports = {
    * @param {object} res - The Express response object
    */
   handleError: function(error, res) {
+    // Handle errors that occur during the chat request and send an error response to the client
     console.error("Caught error:", error);
     res.status(500).json({ error: `Error: ${error}`, message: "An error occurred during the chat request." });
   }

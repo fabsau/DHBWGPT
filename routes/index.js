@@ -1,8 +1,7 @@
-//routes/index.js
+// routes/index.js
 
 module.exports = indexController;
 
-// /routes/index.js
 var express = require('express');
 var router = express.Router();
 
