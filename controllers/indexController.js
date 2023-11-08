@@ -64,9 +64,9 @@ const indexController = {
   getSettings: function(req, res) {
     // Get the system settings from the environment variables and send them to the client
     res.json({
-      endpoint: process.env.ENDPOINT,
-      custom_endpoint: process.env.CUSTOM_ENDPOINT,
-      api_key: process.env.API_KEY,
+      // endpoint: process.env.ENDPOINT,
+      // custom_endpoint: process.env.CUSTOM_ENDPOINT,
+      // api_key: process.env.API_KEY,
       system_message: process.env.SYSTEM_MESSAGE,
       user_message_suffix: process.env.USER_MESSAGE_SUFFIX,
     });
@@ -84,9 +84,9 @@ const indexController = {
     const { endpoint, custom_endpoint, api_key, system_message, user_message_suffix } = req.body;
 
     // Update the environment variables with the new system settings
-    if(endpoint) process.env.ENDPOINT = endpoint;
-    if(custom_endpoint) process.env.CUSTOM_ENDPOINT = custom_endpoint;
-    if(api_key) process.env.API_KEY = api_key;
+    // if(endpoint) process.env.ENDPOINT = endpoint;
+    // if(custom_endpoint) process.env.CUSTOM_ENDPOINT = custom_endpoint;
+    // if(api_key) process.env.API_KEY = api_key;
     if(system_message) process.env.SYSTEM_MESSAGE = system_message;
     if(user_message_suffix) process.env.USER_MESSAGE_SUFFIX = user_message_suffix;
 

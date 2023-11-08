@@ -185,9 +185,9 @@ async function getSettings() {
   const data = await response.json();
 
   // Set the value of the input fields in the modal
-  document.getElementById('endpoint-selector').value = data.endpoint;
-  document.getElementById('custom-endpoint-input').value = data.custom_endpoint || '';
-  document.getElementById('api-key-input').value = data.api_key;
+  // document.getElementById('endpoint-selector').value = data.endpoint;
+  // document.getElementById('custom-endpoint-input').value = data.custom_endpoint || '';
+  // document.getElementById('api-key-input').value = data.api_key;
   document.getElementById('system-message-input').value = data.system_message;
   document.getElementById('user-message-suffix-input').value = data.user_message_suffix;
 }
@@ -199,9 +199,9 @@ async function getSettings() {
  */
 async function updateSettings() {
   // Get the values of the input fields in the modal
-  const endpoint = document.getElementById('endpoint-selector').value;
-  const custom_endpoint = document.getElementById('custom-endpoint-input').value;
-  const api_key = document.getElementById('api-key-input').value;
+  // const endpoint = document.getElementById('endpoint-selector').value;
+  // const custom_endpoint = document.getElementById('custom-endpoint-input').value;
+  // const api_key = document.getElementById('api-key-input').value;
   const system_message = document.getElementById('system-message-input').value;
   const user_message_suffix = document.getElementById('user-message-suffix-input').value;
 
@@ -211,11 +211,11 @@ async function updateSettings() {
       'Content-Type': 'application/json', // Specify the content type as JSON
     },
     body: JSON.stringify({ // Send the updated settings as a JSON string
-      endpoint,
-      custom_endpoint,
+      // endpoint,
+      // custom_endpoint,
       system_message,
       user_message_suffix,
-      api_key
+      // api_key
     }),
   });
 
@@ -281,6 +281,7 @@ function scrollValue(event) {
 }
 
 // Add event listener for endpoint selection
+/*
 document.addEventListener('DOMContentLoaded', function() {
   // Add event listener for endpoint selection
   document.getElementById('endpoint-selector').addEventListener('change', function() {
@@ -292,4 +293,4 @@ document.addEventListener('DOMContentLoaded', function() {
       customEndpointInput.style.display = 'none'; // Hide the custom endpoint input field
     }
   });
-});
+})*/;
