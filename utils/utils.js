@@ -77,7 +77,7 @@ module.exports = {
 
     if (ENDPOINT === 'AZURE') {
       console.log("Request to Azure:", requestBody);
-      url = `https://${AZURE_RESOURCE_NAME}.openai.azure.com/openai/deployments/${model}/chat/completions?${AZURE_API_VERSION}`;
+      url = `https://${AZURE_RESOURCE_NAME}.openai.azure.com/openai/deployments/${model}/chat/completions?api-version=${AZURE_API_VERSION}`;
       headers = {
         'Content-Type': 'application/json',
         'api-key': API_KEY,
