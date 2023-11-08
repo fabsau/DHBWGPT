@@ -92,6 +92,7 @@ module.exports = {
       };
     } else if (ENDPOINT === 'CUSTOM') {
       console.log("Request to custom endpoint:", requestBody);
+      requestBody.model = model.replace('35', '3.5'); // Correct the model name for OpenAI
       url = CUSTOM_ENDPOINT;
       headers = {
         'Content-Type': 'application/json',
