@@ -84,7 +84,7 @@ async function generateResponse() {
       appendMessageToChat('Error', data.message); // Append error message to the chat
     } else {
       const outputText = data.choices[0].message.content;
-      appendMessageToChat('SwagGPT', outputText);
+      appendMessageToChat(APPLICATION_NAME, outputText);
     }
   } catch (error) {
     if (error.name === 'AbortError') {
@@ -100,7 +100,7 @@ async function generateResponse() {
   }
 }
 function appendMessageToChat(role, message) {
-  const displayRole = role === 'user' ? 'You' : 'SwagGPT';
+  const displayRole = role === 'user' ? 'You' : APPLICATION_NAME;
   domElements.chat.insertAdjacentHTML('beforeend', `<li>${displayRole}: ${message}</li>`);
 
   const apiRole = role === 'user' ? 'user' : 'assistant';
