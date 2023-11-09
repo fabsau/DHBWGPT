@@ -4,10 +4,14 @@ body, html {
     height: 100vh;
 }
 
-footer.text-center {
-    margin-top: auto;
+#card-body {
+    height: 25vh;
+    overflow-y: auto;
 }
 
+#stopButton {
+    display: none;
+}
 /*
 #custom-endpoint-div {
  display: none;
