@@ -1,17 +1,25 @@
 body, html {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+}
+
+.container.py-4 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #card-body {
-    height: 25vh;
+    height: 35vh;
     overflow-y: auto;
 }
 
 #stopButton {
     display: none;
 }
+
 /*
 #custom-endpoint-div {
  display: none;
