@@ -31,15 +31,15 @@ block content
               // Top P input
               .col-md-2
                 h6 Top P
-                input#top-p-input.form-control(type='number', step='0.1', min='0.0', max='1.0', placeholder='Top P', value='1.0', onwheel='scrollValue(event)')
+                input#top-p-input.form-control(type='number', step='0.1', min='0.0', max='1.0', placeholder='Top P', value='1', onwheel='scrollValue(event)')
               // Frequency penalty input
               .col-md-2
                 h6 Frequency
-                input#frequency-penalty-input.form-control(type='number', step='0.1', min='-2.0', max='2.0', placeholder='Frequency Penalty', value='0.0', onwheel='scrollValue(event)')
+                input#frequency-penalty-input.form-control(type='number', step='0.1', min='-2.0', max='2.0', placeholder='Frequency Penalty', value='0', onwheel='scrollValue(event)')
               // Presence penalty input
               .col-md-2
                 h6 Presence
-                input#presence-penalty-input.form-control(type='number', step='0.1', min='-2.0', max='2.0', placeholder='Presence Penalty', value='0.0', onwheel='scrollValue(event)')
+                input#presence-penalty-input.form-control(type='number', step='0.1', min='-2.0', max='2.0', placeholder='Presence Penalty', value='0', onwheel='scrollValue(event)')
           // Chat body with chat window
           .card-body#card-body
             #chat-window.chat-window
